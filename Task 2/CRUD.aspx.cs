@@ -20,7 +20,7 @@ namespace Task_2
         {
             UserDataSet userAdapter = new UserDataSet();
             DataTable dt = userAdapter.SelectUser();
-            MyGridView.DataSource = dt; 
+            MyGridView.DataSource = dt;
             MyGridView.DataBind();
         }
 
@@ -28,13 +28,15 @@ namespace Task_2
         {
             string userName = txtUserName.Text.Trim();
             string email = txtEmail.Text.Trim();
-
-            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(email))
+            string password = txtPassword.Text.Trim();
+            
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) )
             {
                 UserDataSet userAdapter = new UserDataSet();
-                userAdapter.InsertUser(userName, email);
+                userAdapter.InsertUser(userName, email ,password);
                 txtUserName.Text = string.Empty;
                 txtEmail.Text = string.Empty;
+                txtPassword.Text = string.Empty;
 
                 LoadGridData();
             }
@@ -54,16 +56,17 @@ namespace Task_2
             if (int.TryParse(txtUserID.Text, out int userID))
             {
                 UserDataSet userAdapter = new UserDataSet();
-                userAdapter.UpdateUser(userID, txtUserName.Text, txtEmail.Text);
+                userAdapter.UpdateUser(userID, txtUserName.Text, txtEmail.Text , txtPassword.Text);
                 LoadGridData();
                 txtUserName.Text = string.Empty;
                 txtEmail.Text = string.Empty;
+                txtPassword .Text = string.Empty;
             }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-         
+
             if (int.TryParse(txtUserID.Text, out int userID))
             {
                 UserDataSet userAdapter = new UserDataSet();
@@ -72,15 +75,16 @@ namespace Task_2
             }
         }
 
-       protected void MyGridView_RowEditing(object sender, GridViewEditEventArgs e)
-{
-    MyGridView.EditIndex = e.NewEditIndex;
-    LoadGridData();
-    GridViewRow row = MyGridView.Rows[e.NewEditIndex];
-    txtUserID.Text = MyGridView.DataKeys[e.NewEditIndex]["UserID"].ToString();
-    txtUserName.Text = ((Label)row.FindControl("lblUserName")).Text;
-    txtEmail.Text = ((Label)row.FindControl("lblEmail")).Text;
-}
+        protected void MyGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            MyGridView.EditIndex = e.NewEditIndex;
+            LoadGridData();
+            GridViewRow row = MyGridView.Rows[e.NewEditIndex];
+            txtUserID.Text = MyGridView.DataKeys[e.NewEditIndex]["UserID"].ToString();
+            txtUserName.Text = ((Label)row.FindControl("lblUserName")).Text;
+            txtEmail.Text = ((Label)row.FindControl("lblEmail")).Text;
+            txtPassword.Text = ((Label)row.FindControl("Password")).Text;
+        }
 
 
         protected void MyGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

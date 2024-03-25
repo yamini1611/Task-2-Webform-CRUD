@@ -10,7 +10,7 @@ namespace Task_2
         private string connectionString = ConfigurationManager.ConnectionStrings["WebFormsTrainingConnectionString"].ConnectionString;
 
         // CRUD operation to insert a new user
-        public void InsertUser(string userName, string email)
+        public void InsertUser(string userName, string email ,string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -18,6 +18,7 @@ namespace Task_2
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@UserName", userName);
                 command.Parameters.AddWithValue("@Email", email);
+                command.Parameters.AddWithValue("@Password", password);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -42,7 +43,7 @@ namespace Task_2
         }
 
         // CRUD operation to update an existing user
-        public void UpdateUser(int userID, string userName, string email)
+        public void UpdateUser(int userID, string userName, string email ,string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -51,7 +52,7 @@ namespace Task_2
                 command.Parameters.AddWithValue("@UserID", userID);
                 command.Parameters.AddWithValue("@UserName", userName);
                 command.Parameters.AddWithValue("@Email", email);
-
+                command.Parameters.AddWithValue ("@Password", password);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
