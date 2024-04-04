@@ -1,9 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" MasterPageFile="~/Site.Master" Inherits="Task_2.Register" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" SkinID="MyTheme.skin">
     <div class="container">
         <h2 class="text-center mb-4">User Registration</h2>
-        
+                <div id="formstyle">
+
         <div class="form-group">
             <label for="txtUsername">Username:</label>
             <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
@@ -34,6 +35,8 @@
         </div>
         <div class="btn-group">
             <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="btn btn-primary" ValidationGroup="UserValidation" />
+        </div>
+                    <h5 >Already Having Account - <a href="Login.aspx">Login</a></h5>
         </div>
 
         <!-- Validation Summary to display all validation messages -->

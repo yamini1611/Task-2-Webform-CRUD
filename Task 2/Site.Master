@@ -12,7 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -46,15 +46,21 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <%-- Show login or logout link based on user's login status --%>
-                            <% if(Session["UserID"] != null) { %>
-                            
-                                <a class="nav-link" runat="server" href="~/CRUD">CRUD</a>
+                            <% if (Session["UserID"] != null && Session["UserID"].ToString() == "yamini")
+                                { %>
+                            <a class="nav-link" runat="server" href="~/CRUD">CRUD</a>
                             <a class="nav-link" runat="server" href="~/Logout">Logout</a>
-                            <% } else { %>
-                                <a class="nav-link" runat="server" href="~/Login">Login</a>
+                            <% }
+                                else if (Session["UserID"] != null)
+                                { %>
+                            <a class="nav-link" runat="server" href="~/Default">Student</a>
+                            <% }
+                            else
+                            { %>
+                            <a class="nav-link" runat="server" href="~/Login">Login</a>
                             <% } %>
                         </li>
+
                     </ul>
                 </div>
             </div>

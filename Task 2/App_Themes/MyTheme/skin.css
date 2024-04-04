@@ -1,0 +1,59 @@
+﻿.container {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.jumbotron {
+    background-color: #007bff;
+    color: #fff;
+    padding: 4rem 2rem;
+}
+
+.features h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.features p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+h5{
+    padding-top:5px
+}
+
+#formstyle {
+    border: solid;
+    border-color: mediumvioletred;
+    padding: 25px;
+}
